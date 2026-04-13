@@ -1,0 +1,20 @@
+{
+  "name": "@agentworkforce/workflows",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Repeatable Agent Relay workflows and cookbooks for repo hygiene",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AgentWorkforce/workflows"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dry-run:maintain-agent-rules": "agent-relay run --dry-run repeatable/maintain-agent-rules/workflow.ts"
+  },
+  "devDependencies": {
+    "@agent-relay/config": "*",
+    "@agent-relay/sdk": "*",
+    "typescript": "^5.6.0"
+  }
+}
