@@ -85,5 +85,6 @@ Until cloud is active, run the workflow locally or from CI via `agent-relay run`
 
 ## Related
 
-- Cookbook walkthrough: `../../cookbooks/01-maintain-agent-rules/README.md`
+- General workflow-authoring tutorial: [`cookbooks/01-your-first-workflow/`](../../cookbooks/01-your-first-workflow/) — uses this workflow as its worked example
 - Pattern reference: `.claude/skills/writing-agent-relay-workflows/SKILL.md` (in any consumer repo)
+- More real-world workflow examples: [`AgentWorkforce/relay`](https://github.com/AgentWorkforce/relay) → `workflows/`, `examples/`, `packages/sdk/examples/`

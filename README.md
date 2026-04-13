@@ -14,7 +14,7 @@ workflows/
 
 **`repeatable/`** — each subdirectory is one workflow. Every workflow is a single `workflow.ts` file you can execute directly with `agent-relay run`, plus a README describing inputs, outputs, and safety rails. These are designed to run continuously (via cron, CI, or eventually [`AgentWorkforce/cloud`](https://github.com/AgentWorkforce)) against any target repo.
 
-**`cookbooks/`** — numbered, step-by-step tutorials. Each cookbook walks you from "I have never heard of this" to "I am running this in production on a schedule." Cookbooks reference the workflows in `repeatable/` but focus on the *why*, the *ingredients*, and the gotchas you only hit on your first run.
+**`cookbooks/`** — numbered, narrative tutorials on **the discipline of writing and operating workflows**. Not per-workflow walkthroughs — cookbooks teach general techniques (your first workflow, debugging, scheduling, interactive teams, safety rails, wave planning) using the workflows in `repeatable/` and real examples from [`AgentWorkforce/relay`](https://github.com/AgentWorkforce/relay) as teaching material. Read them when learning or when something confuses you; skip them when you know what you're doing.
 
 ## Why this exists
 
@@ -37,27 +37,23 @@ See each workflow's README for required env vars and inputs.
 
 ## Current workflows
 
-| Workflow | Purpose | Cookbook |
-|---|---|---|
-| [`maintain-agent-rules`](repeatable/maintain-agent-rules/) | Audit and update `AGENTS.md`, `AGENTS.md.override`, and `.claude/rules/` files against current code | [01](cookbooks/01-maintain-agent-rules/) |
+| Workflow | Purpose |
+|---|---|
+| [`maintain-agent-rules`](repeatable/maintain-agent-rules/) | Audit and update `AGENTS.md`, `AGENTS.md.override`, and `.claude/rules/` files against current code |
 
 More coming.
 
+## Current cookbooks
+
+| # | Cookbook | Topic |
+|---|---|---|
+| [01](cookbooks/01-your-first-workflow/) | Your First Workflow | Learn to author, run, and debug a workflow from scratch |
+
+Planned: debugging a failing workflow · scheduling workflows (CI / cron / cloud) · interactive teams vs one-shot DAGs · safety rails and scope-locking · wave planning for parallel execution.
+
 ## Cookbook format
 
-Each cookbook is a single `README.md` in `cookbooks/NN-<slug>/` with the following shape:
-
-1. **The problem** — why this exists, with a concrete example
-2. **Ingredients** — prerequisites, CLIs, API keys
-3. **Step 1: Clone the recipe** — get the workflow
-4. **Step 2: Dry-run** — validate before committing to changes
-5. **Step 3: The live run** — end-to-end
-6. **Step 4: Read the output** — what to expect
-7. **Step 5: Schedule it** — how to run continuously
-8. **Step 6: Tuning** — knobs to turn
-9. **Step 7: Troubleshooting** — common failures
-
-If you contribute a new cookbook, keep this shape. Readers bounce between cookbooks and recognize the structure.
+Cookbooks teach the **discipline** of workflows, not how to operate one specific workflow. Each cookbook is a single `README.md` in `cookbooks/NN-<slug>/` that walks a reader from "I don't get it" to "I can do this on my own" for one general technique. Use workflows from `repeatable/` (and from the [`AgentWorkforce/relay`](https://github.com/AgentWorkforce/relay) monorepo's `workflows/` and `examples/` directories) as worked examples, but the goal is teaching the technique — not documenting one specific recipe.
 
 ## Contributing a new repeatable workflow
 
