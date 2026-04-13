@@ -19,30 +19,36 @@ relayfile-cloud
 relayfile-adapters
 relayfile-providers
 
-# ─── SDK and tooling ────────────────────────────────────────────────
-relay-sdk
-relay-broker
-relay-dashboard
-relay-tui
-relay-pulse
-relay-examples
-relay-pty-visualizer
-relay-visualizer
-agent-relay-vscode
-vscode-acp
-agent-trace
-
 # ─── Infra and shared ───────────────────────────────────────────────
 workforce
-skills
-docs
 workflows
+
+# ─── Other active ───────────────────────────────────────────────────
+trajectories
+nightcto
+sage
+
+# ─── SDK and tooling (removed — these ship prpm packages, not consume them)
+# relay-sdk
+# relay-broker
+# relay-dashboard
+# relay-tui
+# relay-pulse
+# relay-examples
+# relay-pty-visualizer
+# relay-visualizer
+# agent-relay-vscode
+# vscode-acp
+# agent-trace
+
+# ─── Skipped on purpose ─────────────────────────────────────────────
+# skills  — contains the actual skills, not a consumer
+# docs    — documentation repo
 
 # ─── Patterns / research (uncomment to include) ─────────────────────
 # swarm-patterns
 # simple-swarm
 # AgentSwarm
-# trajectories
 # transport
 # superset
 
@@ -58,12 +64,10 @@ workflows
 # limit
 # megaclaude
 # moltslack
-# nightcto
 # orchestrator
 # pdero
 # pear
 # planner
 # rachel
-# sage
 # sales
 # tic-tac-toe

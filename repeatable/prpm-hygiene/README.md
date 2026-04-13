@@ -40,8 +40,10 @@ So: zero agents, every step is `type: 'deterministic'`. The workflow format is s
 [`repos.txt`](./repos.txt) is a simple newline-delimited file. `#` starts a comment. Currently active by default:
 
 - **Core products** — relay, relayed, relaycast, relaycron, cloud, relayauth, relayfile, relayfile-cloud, relayfile-adapters, relayfile-providers
-- **SDK and tooling** — relay-sdk, relay-broker, relay-dashboard, relay-tui, relay-pulse, relay-examples, relay-pty-visualizer, relay-visualizer, agent-relay-vscode, vscode-acp, agent-trace
-- **Infra and shared** — workforce, skills, docs, workflows
+- **Infra and shared** — workforce, workflows
+- **Other active** — trajectories, nightcto, sage
+
+**Explicitly skipped:** the `skills` repo (it *publishes* skills rather than consuming them), `docs`, and all the SDK / tooling repos (`relay-sdk`, `relay-broker`, `relay-dashboard`, `relay-tui`, `relay-pulse`, `relay-examples`, `relay-pty-visualizer`, `relay-visualizer`, `agent-relay-vscode`, `vscode-acp`, `agent-trace`) — these ship prpm packages, they don't consume the starter collection.
 
 Experimental / research / one-off repos are commented out. Uncomment to include them. Add new repos by appending to the file — one repo per line.
 
