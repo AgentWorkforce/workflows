@@ -1,0 +1,69 @@
+# prpm-hygiene target list
+#
+# One repo name per line. Lines starting with "#" are ignored.
+# The workflow resolves each entry against PARENT_DIR (default: parent of
+# this workflows repo, i.e. /Users/khaliqgant/Projects/AgentWorkforce).
+#
+# To enable a commented repo, delete the leading "#".
+# To disable, add a leading "#".
+
+# ─── Core products ──────────────────────────────────────────────────
+relay
+relayed
+relaycast
+relaycron
+cloud
+relayauth
+relayfile
+relayfile-cloud
+relayfile-adapters
+relayfile-providers
+
+# ─── SDK and tooling ────────────────────────────────────────────────
+relay-sdk
+relay-broker
+relay-dashboard
+relay-tui
+relay-pulse
+relay-examples
+relay-pty-visualizer
+relay-visualizer
+agent-relay-vscode
+vscode-acp
+agent-trace
+
+# ─── Infra and shared ───────────────────────────────────────────────
+workforce
+skills
+docs
+workflows
+
+# ─── Patterns / research (uncomment to include) ─────────────────────
+# swarm-patterns
+# simple-swarm
+# AgentSwarm
+# trajectories
+# transport
+# superset
+
+# ─── Experimental / one-off (uncomment to include) ─────────────────
+# awp
+# build-plans
+# ceo
+# clawrunner
+# cron
+# daily
+# deck
+# gitclawlab
+# limit
+# megaclaude
+# moltslack
+# nightcto
+# orchestrator
+# pdero
+# pear
+# planner
+# rachel
+# sage
+# sales
+# tic-tac-toe

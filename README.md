@@ -40,6 +40,7 @@ See each workflow's README for required env vars and inputs.
 | Workflow | Purpose |
 |---|---|
 | [`maintain-agent-rules`](repeatable/maintain-agent-rules/) | Audit and update `AGENTS.md`, `AGENTS.md.override`, and `.claude/rules/` files against current code |
+| [`prpm-hygiene`](repeatable/prpm-hygiene/) | Install `collections/agent-relay-starter` and run `prpm update` across every AgentWorkforce repo, opening one PR per repo that changed |
 
 More coming.
 
