@@ -70,7 +70,7 @@ const CLI_SPECS: CliSpec[] = [
     id: 'gemini',
     commandName: 'gemini',
     displayName: 'Gemini CLI',
-    installer: 'npm install -g --force @google/gemini-cli@latest',
+    installer: 'npm install -g --force --userconfig=/dev/null @google/gemini-cli@latest',
     requiredTools: ['npm'],
   },
   {
@@ -85,14 +85,14 @@ const CLI_SPECS: CliSpec[] = [
     id: 'codex',
     commandName: 'codex',
     displayName: 'Codex CLI',
-    installer: 'npm install -g --force @openai/codex@latest',
+    installer: 'npm install -g --force --userconfig=/dev/null @openai/codex@latest',
     requiredTools: ['npm'],
   },
   {
     id: 'opencode',
     commandName: 'opencode',
     displayName: 'OpenCode CLI',
-    installer: 'npm install -g --force opencode-ai@latest',
+    installer: 'npm install -g --force --userconfig=/dev/null opencode-ai@latest',
     requiredTools: ['npm'],
   },
 ]
