@@ -41,6 +41,7 @@ See each workflow's README for required env vars and inputs.
 |---|---|
 | [`maintain-agent-rules`](repeatable/maintain-agent-rules/) | Audit and update `AGENTS.md`, `AGENTS.md.override`, and `.claude/rules/` files against current code |
 | [`prpm-hygiene`](repeatable/prpm-hygiene/) | Install `collections/agent-relay-starter` and run `prpm update` across every AgentWorkforce repo, opening one PR per repo that changed |
+| [`ai-cli-updates`](repeatable/ai-cli-updates/) | Install or update Cursor, Factory Droid, Gemini, Claude Code, Codex, and OpenCode CLIs with deterministic shell steps |
 
 More coming.
 

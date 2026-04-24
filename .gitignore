@@ -1,5 +1,7 @@
 node_modules/
 .trail/
+.relay/
+.agent-relay/
 .logs/
 dist/
 *.log
