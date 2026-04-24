@@ -63,7 +63,7 @@ const CLI_SPECS: CliSpec[] = [
     displayName: 'Factory Droid CLI',
     installer: 'curl -fsSL https://app.factory.ai/cli | sh -s -- droid',
     preInstall:
-      'existing=$(command -v droid 2>/dev/null || true); if [ -n "$existing" ]; then backup="${existing}.bak-${timestamp}"; echo "moving existing droid to $backup"; mv "$existing" "$backup"; fi',
+      'existing=$(command -v droid 2>/dev/null || true); if [ -n "$existing" ]; then backup="${existing}.bak-${timestamp}"; echo "moving existing droid to $backup"; mv "$existing" "$backup"; printf "%s\\n%s\\n" "$existing" "$backup" > "${status_file}.backup"; fi',
     requiredTools: ['curl', 'sh'],
   },
   {
@@ -146,9 +146,35 @@ id="${spec.id}"
 command_name="${spec.commandName}"
 timestamp="${TIMESTAMP}"
 export timestamp
+export status_file
 
 log() {
   printf '[%s] %s\\n' "$id" "$*" | tee -a "$status_file"
+}
+
+restore_backup() {
+  backup_file="\${status_file}.backup"
+  [ -s "$backup_file" ] || return 0
+
+  target=$(sed -n '1p' "$backup_file")
+  backup=$(sed -n '2p' "$backup_file")
+  if [ -z "$target" ] || [ -z "$backup" ]; then
+    log "backup marker is incomplete: $backup_file"
+    return 1
+  fi
+
+  if [ ! -e "$backup" ]; then
+    log "backup file is missing: $backup"
+    return 1
+  fi
+
+  if [ -e "$target" ]; then
+    log "not restoring backup because target already exists: $target"
+    return 0
+  fi
+
+  mv "$backup" "$target"
+  log "restored backup to $target"
 }
 
 {
@@ -191,6 +217,7 @@ bash -o pipefail -c ${shellQuote(spec.installer)} 2>&1 | tee -a "$status_file"
 install_status=\${PIPESTATUS[0]}
 if [ "$install_status" -ne 0 ]; then
   log "installer failed with exit code $install_status"
+  restore_backup
   echo "result: FAIL_INSTALL" >> "$status_file"
   exit 0
 fi
@@ -199,6 +226,7 @@ after_path=$(command -v "$command_name" 2>/dev/null || true)
 echo "after_path: \${after_path:-MISSING}" >> "$status_file"
 if [ -z "$after_path" ]; then
   log "installer completed but '$command_name' is not on PATH"
+  restore_backup
   echo "result: FAIL_NOT_ON_PATH" >> "$status_file"
   exit 0
 fi
@@ -318,9 +346,9 @@ echo READY > "${TRAIL_DIR}/ready.txt"`),
     command: summaryCommand(specs),
     captureOutput: true,
     failOnError: true,
-    retries: 0,
   })
 
+  builder.onError('fail-fast', { maxRetries: 0 })
   const result = await builder.run({ cwd: process.cwd() })
   console.log('Workflow status:', result.status)
 }

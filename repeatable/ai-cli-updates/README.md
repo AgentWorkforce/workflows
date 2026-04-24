@@ -29,7 +29,8 @@ fails the run if any CLI ended in `FAIL_*`.
 For Droid, if an existing `droid` executable is already on `PATH`, the workflow
 moves it to a timestamped `.bak-<timestamp>` path before running Factory's
 installer. This handles broken/stale binaries while keeping the previous file
-recoverable.
+recoverable. If the installer fails or does not put `droid` back on `PATH`, the
+workflow restores the previous executable automatically.
 
 ## Inputs
 
@@ -75,5 +76,6 @@ Every per-tool log ends with a `result:` line:
 - `UPDATED`
 - `DRY_RUN`
 - `FAIL_MISSING_TOOL`
+- `FAIL_PRE_INSTALL`
 - `FAIL_INSTALL`
 - `FAIL_NOT_ON_PATH`
